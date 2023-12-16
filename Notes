@@ -1,0 +1,12 @@
+Network set up will 
+
+5 organizations 
+3 peer nodes
+At least 2 endorsing peers per Organization 
+Test for 5 million transactions per day by adding 100K nodes batch per round.
+The smart contact should do basic validation of the input fields of the ticket
+
+
+And additional validation like duplicate tickets ID
+
+

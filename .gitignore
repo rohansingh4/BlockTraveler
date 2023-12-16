@@ -1,0 +1,8 @@
+# Ignore all .tx files
+*.tx
+
+# Ignore all .block files
+*.block
+
+# Ignore all node_modules folders
+node_modules/
