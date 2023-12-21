@@ -14,6 +14,16 @@ const getCCP = async (org) => {
 
     } else if (org == "Org2") {
         ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org2.json');
+
+    } else if (org == "Org3") {
+        ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org3.json');
+
+    } else if (org == "Org4") {
+        ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org4.json');
+        
+    } else if (org == "Org5") {
+        ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org5.json');
+        
     } else
         return null
     const ccpJSON = fs.readFileSync(ccpPath, 'utf8')
@@ -28,6 +38,16 @@ const getCaUrl = async (org, ccp) => {
 
     } else if (org == "Org2") {
         caURL = ccp.certificateAuthorities['ca.org2.example.com'].url;
+
+    } else if (org == "Org3") {
+        caURL = ccp.certificateAuthorities['ca.org3.example.com'].url;
+
+    } else if (org == "Org4") {
+        caURL = ccp.certificateAuthorities['ca.org4.example.com'].url;
+
+    } else if (org == "Org5") {
+        caURL = ccp.certificateAuthorities['ca.org5.example.com'].url;
+
     } else
         return null
     return caURL
@@ -38,9 +58,14 @@ const getWalletPath = async (org) => {
     let walletPath;
     if (org == "Org1") {
         walletPath = path.join(process.cwd(), 'org1-wallet');
-
     } else if (org == "Org2") {
         walletPath = path.join(process.cwd(), 'org2-wallet');
+    } else if (org == "Org3") {
+        walletPath = path.join(process.cwd(), 'org3-wallet');
+    } else if (org == "Org4") {
+        walletPath = path.join(process.cwd(), 'org4-wallet');
+    } else if (org == "Org5") {
+        walletPath = path.join(process.cwd(), 'org5-wallet');
     } else
         return null
     return walletPath
@@ -116,6 +141,33 @@ const getRegisteredUser = async (username, userOrg, isJson) => {
             mspId: 'Org2MSP',
             type: 'X.509',
         };
+    } else if (userOrg == "Org3") {
+        x509Identity = {
+            credentials: {
+                certificate: enrollment.certificate,
+                privateKey: enrollment.key.toBytes(),
+            },
+            mspId: 'Org3MSP',
+            type: 'X.509',
+        };
+    } else if (userOrg == "Org4") {
+        x509Identity = {
+            credentials: {
+                certificate: enrollment.certificate,
+                privateKey: enrollment.key.toBytes(),
+            },
+            mspId: 'Org4MSP',
+            type: 'X.509',
+        };
+    } else if (userOrg == "Org5") {
+        x509Identity = {
+            credentials: {
+                certificate: enrollment.certificate,
+                privateKey: enrollment.key.toBytes(),
+            },
+            mspId: 'Org5MSP',
+            type: 'X.509',
+        };
     }
 
     await wallet.put(username, x509Identity);
@@ -146,10 +198,15 @@ const getCaInfo = async (org, ccp) => {
     let caInfo
     if (org == "Org1") {
         caInfo = ccp.certificateAuthorities['ca.org1.example.com'];
-
     } else if (org == "Org2") {
         caInfo = ccp.certificateAuthorities['ca.org2.example.com'];
-    } else
+    } else if (org == "Org3") {
+        caInfo = ccp.certificateAuthorities['ca.org3.example.com'];
+    } else if (org == "Org4") {
+        caInfo = ccp.certificateAuthorities['ca.org4.example.com'];
+    } else if (org == "Org5") {
+        caInfo = ccp.certificateAuthorities['ca.org5.example.com'];
+    }else
         return null
     return caInfo
 
@@ -196,6 +253,33 @@ const enrollAdmin = async (org, ccp) => {
                     privateKey: enrollment.key.toBytes(),
                 },
                 mspId: 'Org2MSP',
+                type: 'X.509',
+            };
+        } else if (org == "Org3") {
+            x509Identity = {
+                credentials: {
+                    certificate: enrollment.certificate,
+                    privateKey: enrollment.key.toBytes(),
+                },
+                mspId: 'Org3MSP',
+                type: 'X.509',
+            };
+        } else if (org == "Org4") {
+            x509Identity = {
+                credentials: {
+                    certificate: enrollment.certificate,
+                    privateKey: enrollment.key.toBytes(),
+                },
+                mspId: 'Org4MSP',
+                type: 'X.509',
+            };
+        } else if (org == "Org5") {
+            x509Identity = {
+                credentials: {
+                    certificate: enrollment.certificate,
+                    privateKey: enrollment.key.toBytes(),
+                },
+                mspId: 'Org5MSP',
                 type: 'X.509',
             };
         }
