@@ -60,6 +60,23 @@ class TravelerTicketContract extends Contract {
         console.info('============= END : Create TravelerTicketContract ===========');
     }
 
+    async updateTravelerTicketContract(ctx, travelerticketcontractNumber, updatedStatus) {
+        console.info('============= START : Update TravelerTicketContract ===========');
+    
+        const existingTicket = await ctx.stub.getState(travelerticketcontractNumber);
+        if (!existingTicket || existingTicket.length === 0) {
+            throw new Error(`${travelerticketcontractNumber} does not exist`);
+        }
+    
+        const ticket = JSON.parse(existingTicket.toString());
+        ticket.status = updatedStatus;
+    
+        await ctx.stub.putState(travelerticketcontractNumber, Buffer.from(JSON.stringify(ticket)));
+    
+        console.info('============= END : Update TravelerTicketContract ===========');
+    }
+    
+
     async queryAllTravelerTicketContract(ctx) {
         const startKey = '';
         const endKey = '';

@@ -324,49 +324,49 @@ queryCommitted5() {
 }
 # queryCommitted5
 
-# chaincodeInvokeInit() {
-#     setGlobalsForPeer0Org1
-#     peer chaincode invoke -o localhost:7050 \
-#     --ordererTLSHostnameOverride orderer.example.com \
-#     --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
-#     -C $CHANNEL_NAME -n ${CC_NAME} \
-#     --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
-#     --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
-#     --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
-#     --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_ORG4_CA \
-#     --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_ORG5_CA \
-#     --isInit -c '{"Args":[]}'
-# }
-chaincodeInvokeInit(){
+chaincodeInvokeInit() {
     setGlobalsForPeer0Org1
-
-    peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
-    --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ${CC_NAME} \
+    peer chaincode invoke -o localhost:7050 \
+    --ordererTLSHostnameOverride orderer.example.com \
+    --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
+    -C $CHANNEL_NAME -n ${CC_NAME} \
     --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
     --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
     --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
     --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_ORG4_CA \
     --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_ORG5_CA \
-    --isInit -c '{"function":"initLedger","Args":[]}'   
+    --isInit -c '{"Args":[]}'
 }
+# chaincodeInvokeInit(){
+#     setGlobalsForPeer0Org1
+
+#     peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
+#     --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ${CC_NAME} \
+#     --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
+#     --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
+#     --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
+#     --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_ORG4_CA \
+#     --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_ORG5_CA \
+#     --isInit -c '{"function":"initLedger","Args":[]}'   
+# }
 
 
 
 chaincodeInvoke() {
     setGlobalsForPeer0Org1
 
-    ## Init ledger
-    peer chaincode invoke -o localhost:7050 \
-        --ordererTLSHostnameOverride orderer.example.com \
-        --tls $CORE_PEER_TLS_ENABLED \
-        --cafile $ORDERER_CA \
-        -C $CHANNEL_NAME -n ${CC_NAME} \
-        --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
-        --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
-        --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
-        --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_ORG4_CA \
-        --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_ORG5_CA \
-        -c '{"function": "initLedger","Args":[]}'
+    # Init ledger
+    # peer chaincode invoke -o localhost:7050 \
+    #     --ordererTLSHostnameOverride orderer.example.com \
+    #     --tls $CORE_PEER_TLS_ENABLED \
+    #     --cafile $ORDERER_CA \
+    #     -C $CHANNEL_NAME -n ${CC_NAME} \
+    #     --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
+    #     --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
+    #     --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
+    #     --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_ORG4_CA \
+    #     --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_ORG5_CA \
+    #     -c '{"function": "initLedger","Args":[]}'
 
     ## Create TravelerTicketContract
     export TRAVELER_TICKET_CONTRACT=$(echo -n "{\"id\":\"123\", \"trip_id\":\"456\",\"status\":\"BOOKED\",\"revenue\":\"1000\",\"rapid\":\"Y\",\"cm\":\"STANDARD\",\"bus\":\"Bus123\",\"refund\":\"N\",\"check_in\":\"2023-01-01\",\"check_out\":\"2023-01-02\",\"traveler_id\":\"789\"}" | base64 | tr -d \\n)
@@ -398,6 +398,30 @@ chaincodeQuery() {
 }
 
 
+chaincodeUpdate() {
+    setGlobalsForPeer0Org1
+
+    # Example update transaction
+    TRAVELERTICKET_ID="TravelerTicket123"
+    STATUS="UPDATED_STATUS"
+    REVENUE="500"
+    RAPID="N"
+    CM="PREMIUM"
+
+    peer chaincode invoke -o localhost:7050 \
+        --ordererTLSHostnameOverride orderer.example.com \
+        --tls $CORE_PEER_TLS_ENABLED \
+        --cafile $ORDERER_CA \
+        -C $CHANNEL_NAME -n ${CC_NAME} \
+        --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
+        --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
+        --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
+        --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_ORG4_CA \
+        --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_ORG5_CA \
+        -c '{"function": "updateTravelerTicketContract", "Args": ["'"$TRAVELERTICKET_ID"'", "'"$STATUS"'"]}'
+}
+
+
 
 # packageChaincode
 # installChaincode
@@ -421,4 +445,5 @@ chaincodeQuery() {
 # queryCommitted5
 # chaincodeInvokeInit
 # chaincodeInvoke
-chaincodeQuery
+# chaincodeQuery
+chaincodeUpdate

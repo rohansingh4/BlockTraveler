@@ -1,3 +1,2 @@
 Installed chaincodes on peer:
-Package ID: travelerticketcontract_1:825a99c23266f947a3334c6440ce8080d039cd55b03da94add055993f3d74dec, Label: travelerticketcontract_1
-Package ID: travelerticketcontract_1:159ecd5b4b7117e1e4c9c8a0ace9691935b50321dde1914e07a994938afbb42a, Label: travelerticketcontract_1
+Package ID: travelerticketcontract_1:5a33848c017e0d62d1e14b56c3279075638ca6481b3a9111c67193a3228c0765, Label: travelerticketcontract_1
