@@ -1,6 +1,6 @@
 
 chmod -R 0755 ./crypto-config
-# Delete existing artifacts
+# # Delete existing artifacts
 rm -rf ./crypto-config
 rm genesis.block mychannel.tx
 rm -rf ../../channel-artifacts/*
@@ -30,3 +30,12 @@ configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./Org1M
 
 echo "#######    Generating anchor peer update for Org2MSP  ##########"
 configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./Org2MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org2MSP
+
+echo "#######    Generating anchor peer update for Org3MSP  ##########"
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./Org3MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org3MSP
+
+echo "#######    Generating anchor peer update for Org4MSP  ##########"
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./Org4MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org4MSP
+
+echo "#######    Generating anchor peer update for Org5MSP  ##########"
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./Org5MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org5MSP

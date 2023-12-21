@@ -1,2 +1,3 @@
 Installed chaincodes on peer:
-Package ID: fabcar_1:a91ad0bb1fe08760d65da33d249614f3b482d41d39cce0a981f7a014077af836, Label: fabcar_1
+Package ID: travelerticketcontract_1:825a99c23266f947a3334c6440ce8080d039cd55b03da94add055993f3d74dec, Label: travelerticketcontract_1
+Package ID: travelerticketcontract_1:159ecd5b4b7117e1e4c9c8a0ace9691935b50321dde1914e07a994938afbb42a, Label: travelerticketcontract_1
